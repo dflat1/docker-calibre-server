@@ -10,7 +10,7 @@ RUN curl -o /tmp/calibre-tarball.txz -L "https://download.calibre-ebook.com/${CA
     rm -rf /tmp/*
 
 
-FROM --platform=linux/amd64 debian:buster-slim
+FROM --platform=linux/amd64 debian:stable-slim
 
 RUN apt-get update && apt-get install -y \
     dnsutils \
