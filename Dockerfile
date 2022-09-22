@@ -1,6 +1,11 @@
 FROM --platform=linux/amd64 ubuntu:latest
 
-RUN apk --no-cache add curl xz
+# Linux install instructions: 
+# https://calibre-ebook.com/download_linux
+# https://manual.calibre-ebook.com/generated/en/calibre-server.html
+# https://manual.calibre-ebook.com/server.html
+
+RUN apt-get update && apt-get install -y curl xz-utils wget 
 
 ARG CALIBRE_RELEASE="6.5.0"
 
@@ -15,8 +20,8 @@ FROM --platform=linux/amd64 debian:stable-slim
 RUN apt-get update && apt-get install -y \
     dnsutils \
     iproute2 \
-    libfontconfig \
-    libgl1 \
+    python3 xdg-utils \
+    libegl1 libopengl0 	libfontconfig1 libxkbcommon0 libnss3 libxcomposite1 libqt6pdf6 qt6-image-formats-plugin-pdf libqpdf-dev  ## libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 
     && rm -rf /var/lib/apt/lists/*
 COPY --from=0 /opt/calibre /opt/calibre
 RUN /opt/calibre/calibre_postinstall && \
