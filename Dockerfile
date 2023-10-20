@@ -7,7 +7,7 @@ FROM --platform=linux/amd64 ubuntu:latest
 
 RUN apt-get update && apt-get install -y curl xz-utils wget 
 
-ARG CALIBRE_RELEASE="6.28.1"
+ARG CALIBRE_RELEASE="6.29.0"
 
 RUN curl -o /tmp/calibre-tarball.txz -L "https://download.calibre-ebook.com/${CALIBRE_RELEASE}/calibre-${CALIBRE_RELEASE}-x86_64.txz" && \
     mkdir -p /opt/calibre && \
